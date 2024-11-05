@@ -6,7 +6,7 @@
 
 ## Description
 
-Weather Watch is a mobile application that allows users to view current weather conditions in their district, including temperature, wind speed, humidity, and more. Upon launching the app, it verifies the user's internet connection and requests permission to access location services. If GPS is disabled, users are guided to enable it. The app supports a pull-to-refresh functionality, ensuring that users always have the latest weather updates.
+Weather Watch is a mobile application that allows users to view current weather conditions in their district, including temperature, wind speed, humidity, and more. Upon launching the app, it verifies the user's internet connection and requests permission to access location services. If GPS is disabled, users are guided to enable it. The app supports a pull-to-refresh functionality, ensuring that users always have the latest weather updates. Additionally, Weather Watch is compatible with dark mode, providing users with a visually comfortable experience in low-light environments.
 
 ---
 
@@ -23,12 +23,17 @@ Before installing Weather Watch, ensure you have the following prerequisites:
 
 ### Installing
 
-1. **Clone the repository**:
-   git clone https://your-repo-url.com/weather_watch.git
-   cd weather_watch
-Install the dependencies:
+**1. Clone the repository:**
+
+git clone https://your-repo-url.com/weather_watch.git
+cd weather_watch
+
+**2. Install the dependencies:**
+
 flutter pub get
-Update configuration (if necessary): Ensure any environment variables or settings are configured as needed for your setup.
+
+**3. Update configuration (if necessary):** Ensure any environment variables or settings are configured as needed for your setup.
+
 ### Executing the Program
 
 To run Weather Watch, follow these steps:
@@ -57,9 +62,8 @@ If you need help with the app's features or commands, you can access the help se
 
 ## Authors
 
-Your Name - Your Contact Info or GitHub Profile
-Contributors:
-Dominique Pizzie - @DomPizzie
+Your Name - [jisan66](https://www.github.com/jisan66)
+
 
 ## Version History
 0.2
@@ -74,11 +78,8 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ## Acknowledgments
 Inspiration from various weather apps and designs. Thanks to the following resources for their contributions:
 
-awesome-readme
-PurpleBooth
-dbader
-zenorocha
-fvcproductions
+UI Design: [Weather Forecast App (Community)](https://www.figma.com/design/xV3Tex877djuYGzyIb19m1/Weather-Forecast-App-(Community)?node-id=2-0&node-type=canvas&t=wz1DAkDdxNdWASau-0)
+Icons: [Frosted Glass Weather Icons (Community)](https://www.figma.com/design/I0Xa7n7VoYMyjKr61c6RLQ/Frosted-Glass-Weather-Icons-(Community)?node-id=1-2&node-type=canvas&t=2wLxX2OFjaRljK6M-0 )
 Thank you for checking out Weather Watch! We hope you enjoy using our app for your weather updates.
 
 ### Customization Notes:
