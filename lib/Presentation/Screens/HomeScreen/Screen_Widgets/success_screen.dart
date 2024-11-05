@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../Bloc/weather_bloc.dart';
-import '../../../Utils/Themes/card_theme.dart';
-import '../../../Utils/Themes/theme.dart';
-import '../../../Widgets/my_custom_text.dart';
+import 'package:test_weather_app_ui/Utils/Themes/theme.dart';
+import '../../../../Bloc/weather_bloc.dart';
+import '../../../../Widgets/my_custom_text.dart';
 
-
-
-Widget buildErrorWeatherContent(BuildContext context, WeatherErrorState state, bool isDark) {
+Widget buildWeatherContent(BuildContext context, WeatherLoadedState state, bool isDark) {
+  debugPrint(state.weatherinfo["icon_day"].toString());
   return Container(
     height: MediaQuery.of(context).size.height,
     width: double.infinity,
-    decoration: BoxDecoration(gradient: Themes().dayBackground),
+    decoration: BoxDecoration(gradient: isDark ? Themes().nightBackground : Themes().dayBackground),
     child: Stack(
       children: [
         Positioned(
@@ -61,7 +59,7 @@ Widget buildErrorWeatherContent(BuildContext context, WeatherErrorState state, b
                       ),
                       const SizedBox(width: 12),
                       MyText(
-                        text:  state.weatherDataModel == null ? "Location Unknown" :  state.data!,
+                        text: state.data,
                         fontSize: 18,
                       ),
                     ],
@@ -71,8 +69,11 @@ Widget buildErrorWeatherContent(BuildContext context, WeatherErrorState state, b
                   flex: 4,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 60.0),
-                    child: SvgPicture.asset(
-                      state.weatherinfo!["icon"],
+                    child: state.weatherDataModel.current!.isDay.toString() != "1.0"  ? SvgPicture.asset(
+                      state.weatherinfo["icon_day"],
+                      fit: BoxFit.fitWidth,
+                    ):SvgPicture.asset(
+                      state.weatherinfo["icon_night"],
                       fit: BoxFit.fitWidth,
                     ),
                   ),
@@ -82,17 +83,10 @@ Widget buildErrorWeatherContent(BuildContext context, WeatherErrorState state, b
                   child: Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          const Color(0xffFFFFFF).withOpacity(.7),
-                          const Color(0xffe5e5e5).withOpacity(.5)
-                        ],
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                      ),
+                      gradient: isDark ? Themes().nightColor : Themes().dayColor,
                       borderRadius: BorderRadius.circular(28),
                     ),
-                    child:Container(
+                    child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topRight,
@@ -105,10 +99,7 @@ Widget buildErrorWeatherContent(BuildContext context, WeatherErrorState state, b
                         borderRadius: BorderRadius.circular(24),
                       ),
                       child: Center(
-                        child:   state.weatherDataModel == null ?
-                        const MyText(text: "Failed to get Location Data")
-                            :
-                        Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const SizedBox(height: 12),
@@ -121,7 +112,7 @@ Widget buildErrorWeatherContent(BuildContext context, WeatherErrorState state, b
                                     fontSize: 20,
                                   ),
                                   MyText(
-                                    text: "${state.weatherDataModel!.current?.temperature2M?.toInt() ?? 'N/A'}°",
+                                    text: "${state.weatherDataModel.current?.temperature2M?.toInt() ?? 'N/A'}°",
                                     fontSize: 100,
                                     shadow: Shadow(
                                       offset: const Offset(-15.0, 15.0),
@@ -179,7 +170,7 @@ Widget buildErrorWeatherContent(BuildContext context, WeatherErrorState state, b
                                               const Expanded(flex: 1, child: MyText(text: "|", fontSize: 12)),
                                               Expanded(
                                                 flex: 3,
-                                                child: MyText(text: "${state.weatherDataModel!.current?.windSpeed10M ?? 'N/A'} km/h"),
+                                                child: MyText(text: "${state.weatherDataModel.current?.windSpeed10M ?? 'N/A'} km/h"),
                                               ),
                                             ],
                                           ),
@@ -211,7 +202,7 @@ Widget buildErrorWeatherContent(BuildContext context, WeatherErrorState state, b
                                               const Expanded(flex: 1, child: MyText(text: "|", fontSize: 12)),
                                               Expanded(
                                                 flex: 3,
-                                                child: MyText(text: "${state.weatherDataModel!.current?.relativeHumidity2M ?? 'N/A'} %"),
+                                                child: MyText(text: "${state.weatherDataModel.current?.relativeHumidity2M ?? 'N/A'} %"),
                                               ),
                                             ],
                                           ),

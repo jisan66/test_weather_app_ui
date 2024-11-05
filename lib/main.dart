@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:test_weather_app_ui/Presentation/Screens/home_screen.dart';
-import 'Widgets/my_custom_text.dart';
+import 'package:test_weather_app_ui/Presentation/Screens/HomeScreen/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final directory = await getApplicationDocumentsDirectory();
-  Hive.init(directory.path);
-  await Hive.openBox('weatherBox');
   runApp(const MyApp());
 }
 
@@ -21,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Weather Watch',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

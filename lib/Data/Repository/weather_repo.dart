@@ -14,7 +14,8 @@ class WeatherRepository {
       if (response.statusCode == 200) {
         debugPrint("GOT RESULT");
         WeatherDataModel weatherDataModel = weatherDataModelFromJson(response.body);
-        debugPrint(weatherDataModel.toString());
+        debugPrint(weatherDataModel.current?.isDay.toString());
+        debugPrint(weatherDataModel.current?.weatherCode.toString());
         return weatherDataModel;
       } else {
         debugPrint('Failed to load weather data. Status code: ${response.statusCode}');

@@ -1,7 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
-import '../Widgets/custom_toast.dart';
+import '../../Widgets/custom_toast.dart';
 
 class LocationService {
   Future<Position> requestLocationPermission() async {
@@ -13,7 +13,7 @@ class LocationService {
       serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
         Geolocator.openLocationSettings();
-        return Future.error('Location services are disabled.');
+        return Future.error('Location services are disabled. Please turn on location and refresh');
       }
 
       permission = await Geolocator.checkPermission();
