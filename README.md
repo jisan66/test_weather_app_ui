@@ -14,6 +14,9 @@ Weather Watch is a mobile application that allows users to view current weather 
 
 ### Dependencies
 
+<img src="https://github.com/user-attachments/assets/adc3e609-b4d4-4794-a9a8-369aaee87496" alt="Description" width="500"/>
+
+
 Before installing Weather Watch, ensure you have the following prerequisites:
 
 - Flutter SDK (latest stable version)
